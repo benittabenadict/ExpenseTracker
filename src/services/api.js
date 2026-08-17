@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://expensetracker-2ab2.onrender.com";
 
 export const loginUser = async (username, password) => {
   try {
