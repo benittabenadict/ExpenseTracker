@@ -1,16 +1,19 @@
 const API_URL = "https://expensetracker-2ab2.onrender.com";
+
+// LOGIN
 export const loginUser = async (username, password) => {
   try {
-    const response = await fetch(`${API_URL}/login/`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    username,
-    password,
-  }),
-});
+    const response = await fetch(`${API_URL}/api/login/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+
     const data = await response.json();
 
     console.log("LOGIN STATUS:", response.status);
@@ -27,10 +30,11 @@ export const loginUser = async (username, password) => {
   }
 };
 
+// GET EXPENSES
 export const getExpenses = async () => {
   const token = localStorage.getItem("access_token");
 
-  const response = await fetch(`${API_URL}/expenses/`, {
+  const response = await fetch(`${API_URL}/api/expenses/`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -47,10 +51,11 @@ export const getExpenses = async () => {
   return data;
 };
 
+// ADD EXPENSE
 export const addExpense = async (expense) => {
   const token = localStorage.getItem("access_token");
 
-  const response = await fetch(`${API_URL}/expenses/`, {
+  const response = await fetch(`${API_URL}/api/expenses/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -68,10 +73,11 @@ export const addExpense = async (expense) => {
   return data;
 };
 
+// DELETE EXPENSE
 export const deleteExpense = async (id) => {
   const token = localStorage.getItem("access_token");
 
-  const response = await fetch(`${API_URL}/expenses/${id}/`, {
+  const response = await fetch(`${API_URL}/api/expenses/${id}/`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
