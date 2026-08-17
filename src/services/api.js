@@ -1,18 +1,16 @@
 const API_URL = "https://expensetracker-2ab2.onrender.com";
-
 export const loginUser = async (username, password) => {
   try {
     const response = await fetch(`${API_URL}/login/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    });
-
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    username,
+    password,
+  }),
+});
     const data = await response.json();
 
     console.log("LOGIN STATUS:", response.status);
